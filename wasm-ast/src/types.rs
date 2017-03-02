@@ -1,41 +1,41 @@
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-enum ValueType {
+pub enum ValueType {
     I32, I64, F32, F64
 }
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-enum ElemType {
+pub enum ElemType {
     AnyFuncType
 }
 
 #[derive(Debug, Eq, PartialEq, Hash, Clone)]
-struct StackType(Vec<ValueType>);
+pub struct StackType(Vec<ValueType>);
 
 #[derive(Debug, Eq, PartialEq, Hash, Clone)]
-struct FuncType(StackType, StackType);
+pub struct FuncType(StackType, StackType);
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-struct Limits<T> {
+pub struct Limits<T> {
     min: T,
     max: T,
 }
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-enum Mutability {
+pub enum Mutability {
     Immutable, Mutable
 }
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-struct TableType(Limits<i32>, ElemType);
+pub struct TableType(Limits<i32>, ElemType);
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-struct MemoryType(Limits<i32>);
+pub struct MemoryType(Limits<i32>);
 
 #[derive(Debug, Eq, PartialEq, Hash, Copy, Clone)]
-struct GlobalType(ValueType, Mutability);
+pub struct GlobalType(ValueType, Mutability);
 
 #[derive(Debug, Eq, PartialEq, Hash, Clone)]
-enum ExternalType {
+pub enum ExternalType {
     ExternalFuncType(FuncType),
     ExternalTableType(TableType),
     ExternalMemoryType(MemoryType),
@@ -43,7 +43,7 @@ enum ExternalType {
 }
 
 impl ValueType {
-    fn size_of(self) -> u8 {
+    pub fn size_of(self) -> u8 {
         match self {
             ValueType::I32 | ValueType::F32 => 4,
             ValueType::I64 | ValueType::F64 => 8,
