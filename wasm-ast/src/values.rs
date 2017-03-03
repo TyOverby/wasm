@@ -1,3 +1,4 @@
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Values<A, B, C, D> {
     I32(A),
     I64(B),
