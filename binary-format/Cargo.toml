@@ -1,0 +1,12 @@
+[package]
+name = "wasm-binary-format"
+version = "0.1.0"
+authors = ["Ty Overby <ty@pre-alpha.com>"]
+
+[dependencies.wasm-ast]
+path = "../ast"
+
+[dependencies]
+leb128 = "0.2.1"
+nom = "2.1.0"
+byteorder = "1.0.0"
