@@ -12,9 +12,9 @@ pub enum ExportKind {
 
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct Export {
-    name: String,
-    kind: ExportKind,
-    item: ops::Var,
+    pub name: String,
+    pub kind: ExportKind,
+    pub item: ops::Var,
 }
 
 #[derive(Clone, Copy, Eq, PartialEq, Debug)]
@@ -27,21 +27,38 @@ pub enum ImportKind {
 
 #[derive(Clone, Eq, PartialEq, Debug)]
 pub struct Import {
-    module_name: String,
-    item_name: String,
-    kind: ImportKind,
+    pub module_name: String,
+    pub item_name: String,
+    pub kind: ImportKind,
 }
 
 #[derive(Clone, PartialEq, Debug)]
 pub struct Module {
-    types: Vec<types::FuncType>,
-    globals: Vec<misc::Global>,
-    tables: Vec<misc::Table>,
-    memories: Vec<misc::Memory>,
-    funcs: Vec<misc::Func>,
-    start: Option<ops::Var>,
-    elems: Vec<misc::Segment<Vec<ops::Var>>>,
-    data: Vec<misc::Segment<String>>,
-    imports: Vec<Import>,
-    exports: Vec<Export>,
+    pub types: Vec<types::FuncType>,
+    pub globals: Vec<misc::Global>,
+    pub tables: Vec<misc::Table>,
+    pub memories: Vec<misc::Memory>,
+    pub funcs: Vec<misc::Func>,
+    pub start: Option<ops::Var>,
+    pub elems: Vec<misc::Segment<Vec<ops::Var>>>,
+    pub data: Vec<misc::Segment<String>>,
+    pub imports: Vec<Import>,
+    pub exports: Vec<Export>,
+}
+
+impl Default for Module {
+    fn default() -> Module {
+        Module {
+            types: vec![],
+            globals: vec![],
+            tables: vec![],
+            memories: vec![],
+            funcs: vec![],
+            start: None,
+            elems: vec![],
+            data: vec![],
+            imports: vec![],
+            exports: vec![],
+        }
+    }
 }

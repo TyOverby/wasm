@@ -7,53 +7,38 @@ pub struct Const(Vec<ops::Instruction>, source::SourceKey);
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct Global {
-    gtype: types::GlobalType,
-    value: Const,
-    source: source::SourceKey,
+    pub gtype: types::GlobalType,
+    pub value: Const,
+    pub source: source::SourceKey,
 }
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct Func {
-    ftype: ops::Var,
-    locals: Vec<types::ValueType>,
-    body: Vec<ops::Instruction>,
-    source: source::SourceKey,
+    pub ftype: ops::Var,
+    pub locals: Vec<types::ValueType>,
+    pub body: Vec<ops::Instruction>,
+    pub source: source::SourceKey,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Table {
-    ttype: types::TableType,
-    source: source::SourceKey,
+    pub ttype: types::TableType,
+    pub source: source::SourceKey,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Memory {
-    mtypes: types::MemoryType,
-    source: source::SourceKey,
+    pub mtypes: types::MemoryType,
+    pub source: source::SourceKey,
 }
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct Segment<T> {
-    index: ops::Var,
-    offset: Const,
-    source: source::SourceKey,
-    init: T,
+    pub index: ops::Var,
+    pub offset: Const,
+    pub source: source::SourceKey,
+    pub init: T,
 }
 
 pub type TableSegment = Segment<Vec<ops::Var>>;
 pub type MemorySegment = Segment<String>;
-
-/*
-* Globals & Functions *)
-
-type 'data segment = 'data segment' Source.phrase
-and 'data segment' =
-{
-  index : var;
-  offset : const;
-  init : 'data;
-}
-
-type table_segment = var list segment
-type memory_segment = string segment
-*/

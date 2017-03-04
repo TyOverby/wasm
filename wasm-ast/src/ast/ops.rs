@@ -76,19 +76,19 @@ pub struct MemOp<T> {
 }
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct LoadOp(MemOp<(memory::PageSize, memory::Extension)>);
+pub struct LoadOp(pub MemOp<(memory::PageSize, memory::Extension)>);
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct StoreOp(MemOp<memory::PageSize>);
+pub struct StoreOp(pub MemOp<memory::PageSize>);
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub struct Var(i32, source::SourceKey);
+pub struct Var(pub i32, pub source::SourceKey);
 
 #[derive(Clone, Debug, PartialEq)]
-pub struct Literal(values::Value, source::Pos);
+pub struct Literal(pub values::Value, pub source::Pos);
 
 #[derive(Clone, Debug, PartialEq)]
-pub struct Instruction(Instr, source::SourceKey);
+pub struct Instruction(pub Instr, pub source::SourceKey);
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Instr {
