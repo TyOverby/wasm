@@ -11,9 +11,9 @@ This project *is* about using/producing WASM from inside of Rust programs.
 
 ### In Progress
 * wasm-ast: A simple representation of the WASM module and instructions.
+* wasm-binary-format: A parser and serializer for the official WASM binary format.
 
 ### Planned
-* wasm-binary-format: A parser and serializer for the official WASM binary format.
 * wasm-sexpr-format: A parser and serializer for the *unofficial* WASM sexpr format used in the reference implementation.
 * wasm-interp: A reference implementation (slow) of the WASM vm.
 * wasm-validate: An implementation of a WASM module validator.
